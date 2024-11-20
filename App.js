@@ -1,10 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import Detalhes from './pages/Detalhes';
 
 export default function App() {
   return (
       <View style={styles.container}>
-        <View style={styles.box}>
+        <Detalhes/>
+        {/* <View style={styles.box}>
           <Text style={styles.title}>LOGIN</Text>
 
           <Text style={styles.text}>EMAIL:</Text>
@@ -27,7 +29,7 @@ export default function App() {
           <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>Criar Conta</Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
   );
 }
@@ -35,8 +37,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
     backgroundColor: '#333',
   },
   box: {
