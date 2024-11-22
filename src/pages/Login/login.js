@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Text, TextInput, TouchableOpacity, View, Alert } from 'react-native';
+import { Text, TouchableOpacity, View, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import { styles } from './style';
+import InputField from '../../components/Input';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -20,7 +21,7 @@ export default function Login() {
 
             if (user) {
                 Alert.alert('Sucesso', `Bem-vindo, ${user.Nome}!`)
-                // navigation.navigate('Início') tenho que arrumar 
+                navigation.navigate('Início')
             } else {
                 Alert.alert('Erro', 'Email ou senha incorretos. Tente novamente.')
             }
@@ -40,7 +41,7 @@ export default function Login() {
                 <Text style={styles.title}>LOGIN</Text>
 
                 <Text style={styles.text}>EMAIL:</Text>
-                <TextInput
+                <InputField
                     style={styles.input}
                     placeholder="Digite seu email"
                     placeholderTextColor="white"
@@ -49,7 +50,7 @@ export default function Login() {
                 />
 
                 <Text style={styles.text}>SENHA:</Text>
-                <TextInput
+                <InputField
                     style={styles.input}
                     placeholder="Digite sua senha"
                     placeholderTextColor="white"
