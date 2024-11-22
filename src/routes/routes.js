@@ -2,9 +2,11 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../pages/Home/home";
 import Perfil from "../pages/Perfil/perfil";
 import Categoria from "../pages/Categoria/categoria";
+import Cadastro from "../pages/Cadastro/cadastro";
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
+import Feather from 'react-native-vector-icons/Feather';
 
 const Tab = createBottomTabNavigator();
 
@@ -48,6 +50,19 @@ export default function Routes() {
                     tabBarIcon: ({ focused }) => (
                         <MaterialCommunityIcons
                             name="chef-hat"
+                            size={25}
+                            color={focused ? '#ef4418' : '#EBE7E7'}
+                        />
+                    ),
+                }}
+            />
+            <Tab.Screen
+                name="Cadastro"
+                component={Cadastro}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <Feather
+                            name="user-plus"
                             size={25}
                             color={focused ? '#ef4418' : '#EBE7E7'}
                         />
