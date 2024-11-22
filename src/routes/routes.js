@@ -21,6 +21,8 @@ export default function Routes() {
                 tabBarLabelStyle: {
                     fontSize: 14,
                     fontWeight: 'bold',
+                    position: 'relative',
+                    bottom: 5,
                 },
                 tabBarActiveTintColor: '#ef4418',
                 tabBarInactiveTintColor: '#EBE7E7',
