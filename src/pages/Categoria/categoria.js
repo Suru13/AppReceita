@@ -1,10 +1,8 @@
 import React from 'react';
-import { View, Text, Alert } from 'react-native';
+import { View, Text, Alert, Image, TouchableOpacity } from 'react-native';
 import { styles } from './style';
-import { TouchableOpacity } from 'react-native';
 
-const Categorias = () => {
-
+export default function Categoria() {
   const fetchCategoryData = async (categoria) => {
     try {
       const response = await fetch(`https://66fdc9b2699369308956334c.mockapi.io/receitas${categoria}`);
@@ -21,25 +19,71 @@ const Categorias = () => {
   };
 
   return (
-
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={() => fetchCategoryData('Norte')}>
-        <Text style={styles.text}>Norte</Text>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => fetchCategoryData('Norte')}
+      >
+        <Image
+          style={styles.img}
+          source={require('../../../assets/PratoNorteCategoria.jpg')}
+        />
+        <View style={styles.textOverlay}>
+          <Text style={styles.textButton}>Norte</Text>
+        </View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => fetchCategoryData('Nordeste')}>
-        <Text style={styles.text}>Nordeste</Text>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => fetchCategoryData('Nordeste')}
+      >
+        <Image
+          style={styles.img}
+          source={require('../../../assets/PratoNordesteCategoria.jpg')}
+        />
+        <View style={styles.textOverlay}>
+          <Text style={styles.textButton}>Nordeste</Text>
+        </View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => fetchCategoryData('Centro-oeste')}>
-        <Text style={styles.text}>Centro-oeste</Text>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => fetchCategoryData('Centro-oeste')}
+      >
+        <Image
+          style={styles.img}
+          source={require('../../../assets/PratoCentroOesteCategoria.jpg')}
+        />
+        <View style={styles.textOverlay}>
+          <Text style={styles.textButton}>Centro-Oeste</Text>
+        </View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => fetchCategoryData('Sudeste')}>
-        <Text style={styles.text}>Sudeste</Text>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => fetchCategoryData('Centro-oeste')}
+      >
+        <Image
+          style={styles.img}
+          source={require('../../../assets/PratoTipicoSudesteCategoria.jpeg')}
+        />
+        <View style={styles.textOverlay}>
+          <Text style={styles.textButton}>Sudeste</Text>
+        </View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => fetchCategoryData('Sul')}>
-        <Text style={styles.text}>Sul</Text>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => fetchCategoryData('Centro-oeste')}
+      >
+        <Image
+          style={styles.img}
+          source={require('../../../assets/PratoSulCategoria.jpg')}
+        />
+        <View style={styles.textOverlay}>
+          <Text style={styles.textButton}>Sul</Text>
+        </View>
       </TouchableOpacity>
     </View>
   );
-};
-
-export default Categorias;
+}
