@@ -26,19 +26,17 @@ export const styles = StyleSheet.create({
         alignSelf: 'flex-start',
         marginTop: 10,
     },
-
-    button: {
-        marginTop: 20,
-        backgroundColor: '#555',
-        paddingVertical: 15,
-        paddingHorizontal: 25,
-        borderRadius: 5,
-    },
     buttonText: {
         color: '#fff',
         fontSize: 16,
         fontWeight: 'bold',
         textAlign: 'center',
+    },
+    linkText: {
+        color: '#1F31B5',
+        textDecorationLine: 'underline',
+        fontWeight: 'bold',
+        fontSize: 15,
     },
     TextNoAccount: {
         marginTop: 10,

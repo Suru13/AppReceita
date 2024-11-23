@@ -72,7 +72,7 @@ export default function Routes() {
             />
             <Tab.Screen
                 name="Perfil"
-                component={Perfil}
+                component={Login}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <FontAwesome6
