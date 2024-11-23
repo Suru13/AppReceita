@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { View, Text, Alert, Image, TouchableOpacity } from 'react-native';
 import { styles } from './style';
+import { ScrollView } from 'react-native';
 
 export default function Categoria({ navigation }) {
   const [receitas, setReceitas] = useState([]);
@@ -29,7 +30,19 @@ export default function Categoria({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+   
+      <ScrollView 
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={
+        {
+          flex: 1,
+          backgroundColor: '#2b2b2b',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }
+      }
+
+      >
       <TouchableOpacity style={styles.button} onPress={() => fetchCategoryData('Norte')}>
         <Image style={styles.img} source={require('../../../assets/PratoNorteCategoria.jpg')} />
         <View style={styles.textOverlay}>
@@ -64,6 +77,8 @@ export default function Categoria({ navigation }) {
           <Text style={styles.textButton}>Sul</Text>
         </View>
       </TouchableOpacity>
-    </View>
+
+      </ScrollView>
+    
   );
 }
