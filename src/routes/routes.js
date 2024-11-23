@@ -11,6 +11,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Feather from 'react-native-vector-icons/Feather';
 import Detalhe from '../pages/DetalheReceita/detalhe';
+import Login from "../pages/Login/login";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();

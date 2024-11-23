@@ -37,5 +37,5 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 3,
         marginBottom: 15
-    }
+    },
 });

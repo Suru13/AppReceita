@@ -31,7 +31,7 @@ export default function Home({navigation}) {
     return (
         <View style={styles.container}>
             <ScrollView
-            showsVerticalScrollIndicator={false}
+                showsVerticalScrollIndicator={false}
             >
                 <View style={styles.bannerContainer}>
                     <Banner />
@@ -43,24 +43,21 @@ export default function Home({navigation}) {
                     {receitas.map((receita) => (
                         <View key={receita.id} style={styles.item}>
                             <TouchableOpacity
-                            onPress={()=> navigation.navigate("Detalhe",
-                                 {
-                                    receita
-                                 })}
+                            onPress={()=> navigation.navigate("Detalhe", {
+                                    receita}
+                              )}
                             >
                                 <Image
-                                style={styles.receitaImg}
-                                source={{ uri: receita.imagem }}
+                                    style={styles.receitaImg}
+                                    source={{ uri: receita.imagem }}
                                 />
-                            
-                            <Text style={styles.receitaTitle}>{filterDesc(receita.nome)}</Text>
 
+                                <Text style={styles.receitaTitle}>{filterDesc(receita.nome)}</Text>
                             </TouchableOpacity>
 
                         </View>
                     ))}
                 </View>
-
             </ScrollView>
         </View>
     );
