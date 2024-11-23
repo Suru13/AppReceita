@@ -1,12 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { Text, View } from 'react-native'
+import { styles } from './style'
 
 export default function Perfil() {
     return (
-        <View>
-            <Text>pagina perfil</Text>
+        <View style={styles.container}>
         </View>
     )
 }
-
-const styles = StyleSheet.create({})
