@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { View, Text, Alert, Image, TouchableOpacity } from 'react-native';
 import { styles } from './style';

@@ -31,7 +31,7 @@ export default function Home() {
     return (
         <View style={styles.container}>
             <ScrollView
-            showsVerticalScrollIndicator={false}
+                showsVerticalScrollIndicator={false}
             >
                 <View style={styles.bannerContainer}>
                     <Banner />
@@ -41,21 +41,20 @@ export default function Home() {
 
                 <View style={styles.list}>
                     {receitas.map((receita) => (
-                        <View key={receita.id} style={styles.item}>
-                            <TouchableOpacity >
+                        <View key={receita.id} >
+                            <TouchableOpacity>
                                 <Image
-                                style={styles.receitaImg}
-                                source={{ uri: receita.imagem }}
+                                    style={styles.receitaImg}
+                                    source={{ uri: receita.imagem }}
                                 />
-                            
-                            <Text style={styles.receitaTitle}>{filterDesc(receita.nome)}</Text>
+
+                                <Text style={styles.receitaTitle}>{filterDesc(receita.nome)}</Text>
 
                             </TouchableOpacity>
 
                         </View>
                     ))}
                 </View>
-
             </ScrollView>
         </View>
     );
