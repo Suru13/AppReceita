@@ -76,7 +76,9 @@ export default function Routes() {
             />
             <Tab.Screen
                 name="Perfil"
+
                 component={PerfilStack}
+
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <FontAwesome6

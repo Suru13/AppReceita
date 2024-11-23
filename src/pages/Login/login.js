@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import { styles } from './style';
 import InputField from '../../components/Input';
+import ButtonField from '../../components/Button';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -59,16 +60,17 @@ export default function Login() {
                     onChangeText={setPassword}
                 />
 
-                <Text style={styles.TextNoAccount}>Não possui cadastro?</Text>
+                <View style={styles.noAccountContainer}>
+                    <Text style={styles.TextNoAccount}>Não possui cadastro? </Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
+                        <Text style={styles.linkText}>Cadastre-se</Text>
+                    </TouchableOpacity>
+                </View>
 
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Cadastro')}>
-                    <Text style={styles.buttonText}>Criar Conta</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                <ButtonField style={styles.button} onPress={handleLogin}>
                     <Text style={styles.buttonText}>Entrar</Text>
-                </TouchableOpacity>
+                </ButtonField>
             </View>
-        </View>
+        </View >
     );
 }
