@@ -6,11 +6,15 @@ export default function Cadastro({navigation}) {
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
-    const apiURL = 'https://673fc934a9bc276ec4b996c4.mockapi.io/apicads/api';
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleCadastro = async () => {
+        
+        setIsLoading(true);
+
         if (!nome || !email || !senha) {
             Alert.alert('Erro', 'Preencha todos os campos!');
+            setIsLoading(false);
             return;
         }
 
@@ -36,6 +40,8 @@ export default function Cadastro({navigation}) {
             }
         } catch {
             Alert.alert('Erro', 'Ocorreu um erro ao conectar à API.');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -68,8 +74,12 @@ export default function Cadastro({navigation}) {
                 onChangeText={setSenha}
             />
 
-            <TouchableOpacity style={styles.button} onPress={handleCadastro}>
-                <Text style={styles.buttonText}>Cadastrar</Text>
+            <TouchableOpacity style={styles.button} onPress={handleCadastro} disabled={isLoading}>
+                <Text style={styles.buttonText}>{isLoading ? "Cadastrando..." : "Cadastrar"}</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                <Text style={styles.linkText}>Você ja tem uma conta? Entre na sua conta.</Text>
             </TouchableOpacity>
         </View>
     );

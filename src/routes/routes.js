@@ -16,6 +16,15 @@ import Login from "../pages/Login/login";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+function CadastroStack() {
+    return (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Cadastro" component={Cadastro} />
+            <Stack.Screen name="Login" component={Login} />
+        </Stack.Navigator>
+    );
+}
+
 function HomeStack() {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -43,14 +52,6 @@ function PerfilStack() {
     );
 }
 
-function CadastroStack() {
-    return (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Cadastro" component={Cadastro} />
-            <Stack.Screen name="Login" component={Login} />
-        </Stack.Navigator>
-    );
-}
 
 export default function Routes() {
     return (
@@ -92,19 +93,6 @@ export default function Routes() {
                     tabBarIcon: ({ focused }) => (
                         <MaterialCommunityIcons
                             name="chef-hat"
-                            size={25}
-                            color={focused ? '#ef4418' : '#EBE7E7'}
-                        />
-                    ),
-                }}
-            />
-            <Tab.Screen
-                name="Cadastro"
-                component={CadastroStack}
-                options={{
-                    tabBarIcon: ({ focused }) => (
-                        <Feather
-                            name="user-plus"
                             size={25}
                             color={focused ? '#ef4418' : '#EBE7E7'}
                         />
