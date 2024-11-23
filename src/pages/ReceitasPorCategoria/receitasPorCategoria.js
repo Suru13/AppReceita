@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import { styles } from "./style";
+import Octicons from 'react-native-vector-icons/Octicons';
 
 export default function ReceitasPorCategoria({ route, navigation }) {
   const { categoria, receitas } = route.params;
@@ -24,14 +25,29 @@ export default function ReceitasPorCategoria({ route, navigation }) {
               <TouchableOpacity
                 onPress={() =>
                   navigation.navigate("Detalhe", {
-                    receita,categoria
+                    receita, categoria
                   })
                 }
               >
+
                 <Image
                   style={styles.receitaImg}
                   source={{ uri: receita.imagem }}
                 />
+
+                <View style={styles.containerAvaliacao}>
+                  <Octicons
+                    name="star-fill"
+                    size={16}
+                    color={'#e7a74e'}
+                    style={styles.iconeAvaliacao}
+                  />
+
+                  <Text style={styles.textoAvaliacao}>
+                    {receita.avaliacao}
+                  </Text>
+                </View>
+
                 <Text style={styles.receitaTitle}>
                   {filterDesc(receita.nome)}
                 </Text>
