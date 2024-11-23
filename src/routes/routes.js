@@ -16,6 +16,42 @@ import Login from "../pages/Login/login";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+function HomeStack() {
+    return (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Detalhe" component={Detalhe} />
+        </Stack.Navigator>
+    );
+}
+
+function CategoriaStack() {
+    return (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Categoria" component={Categoria} />
+            <Stack.Screen name="ReceitasPorCategoria" component={ReceitasPorCategoria} />
+            <Stack.Screen name="Detalhe" component={Detalhe} />
+        </Stack.Navigator>
+    );
+}
+
+function PerfilStack() {
+    return (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Perfil" component={Perfil} />
+        </Stack.Navigator>
+    );
+}
+
+function CadastroStack() {
+    return (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Cadastro" component={Cadastro} />
+            <Stack.Screen name="Login" component={Login} />
+        </Stack.Navigator>
+    );
+}
+
 export default function Routes() {
     return (
         <Tab.Navigator
@@ -64,7 +100,7 @@ export default function Routes() {
             />
             <Tab.Screen
                 name="Cadastro"
-                component={Cadastro} 
+                component={CadastroStack}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Feather
@@ -91,31 +127,3 @@ export default function Routes() {
         </Tab.Navigator>
     );
 }
-
-export function HomeStack() {
-    return (
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Detalhe" component={Detalhe} />
-        </Stack.Navigator>
-    );
-}
-
-export function CategoriaStack() {
-    return (
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name="Categoria" component={Categoria} />
-            <Stack.Screen name="ReceitasPorCategoria" component={ReceitasPorCategoria} />
-            <Stack.Screen name="Detalhe" component={Detalhe} />
-        </Stack.Navigator>
-    );
-}
-
-export function PerfilStack() {
-    return (
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-            <Stack.Screen name="Perfil" component={Perfil} />
-        </Stack.Navigator>
-    );
-}
-

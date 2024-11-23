@@ -1,10 +1,6 @@
-import { TextInput } from 'react-native'
-import { styles } from './style';
+import React from 'react';
+import { TextInput } from 'react-native';
 
-export default function InputField() {
-    return (
-        <TextInput style={styles.input}>
-
-        </TextInput>
-    )
+export default function InputField({ style, ...rest }) {
+    return <TextInput style={[style]} {...rest} />;
 }

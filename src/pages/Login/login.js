@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, TouchableOpacity, View, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import { styles } from './style';
@@ -13,64 +13,52 @@ export default function Login() {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.get('https://673fc934a9bc276ec4b996c4.mockapi.io/apicads/api')
-
+            const response = await axios.get('https://673fc934a9bc276ec4b996c4.mockapi.io/apicads/api');
 
             const user = response.data.find(
                 (user) => user.Email.toLowerCase() === email.toLowerCase() && user.Senha === password
             );
 
             if (user) {
-                Alert.alert('Sucesso', `Bem-vindo, ${user.Nome}!`)
-                navigation.navigate('Início')
+                Alert.alert('Sucesso', `Bem-vindo, ${user.Nome}!`);
+                navigation.navigate('Início');
             } else {
-                Alert.alert('Erro', 'Email ou senha incorretos. Tente novamente.')
+                Alert.alert('Erro', 'Email ou senha incorretos. Tente novamente.');
             }
         } catch (error) {
-            console.error('Erro na API:', error.response?.data || error.message)
-            Alert.alert(
-                'Erro',
-                'Não foi possível realizar o login.'
-            );
+            console.error('Erro na API:', error.response?.data || error.message);
+            Alert.alert('Erro', 'Não foi possível realizar o login.');
         }
     };
 
-
     return (
         <View style={styles.container}>
-            <View style={styles.box}>
-                <Text style={styles.title}>LOGIN</Text>
+            <Text style={styles.title}>Login</Text>
 
-                <Text style={styles.text}>EMAIL:</Text>
-                <InputField
-                    style={styles.input}
-                    placeholder="Digite seu email"
-                    placeholderTextColor="white"
-                    value={email}
-                    onChangeText={setEmail}
-                />
+            <InputField
+                style={styles.input}
+                placeholder="E-mail"
+                placeholderTextColor="#aaa"
+                keyboardType="email-address"
+                value={email}
+                onChangeText={setEmail}
+            />
+            <InputField
+                style={styles.input}
+                placeholder="Senha"
+                placeholderTextColor="#aaa"
+                secureTextEntry
+                value={password}
+                onChangeText={setPassword}
+            />
 
-                <Text style={styles.text}>SENHA:</Text>
-                <InputField
-                    style={styles.input}
-                    placeholder="Digite sua senha"
-                    placeholderTextColor="white"
-                    secureTextEntry
-                    value={password}
-                    onChangeText={setPassword}
-                />
+            <ButtonField style={styles.button} onPress={handleLogin}>
+                <Text style={styles.buttonText}>Entrar</Text>
+            </ButtonField>
 
-                <View style={styles.noAccountContainer}>
-                    <Text style={styles.TextNoAccount}>Não possui cadastro? </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
-                        <Text style={styles.linkText}>Cadastre-se</Text>
-                    </TouchableOpacity>
-                </View>
-
-                <ButtonField style={styles.button} onPress={handleLogin}>
-                    <Text style={styles.buttonText}>Entrar</Text>
-                </ButtonField>
-            </View>
-        </View >
+            <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
+                <Text style={styles.linkText}>Não possui cadastro? Cadastre-se</Text>
+            </TouchableOpacity>
+        </View>
     );
 }
