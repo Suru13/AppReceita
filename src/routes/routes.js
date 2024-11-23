@@ -1,14 +1,18 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "../pages/Home/home";
-import Perfil from "../pages/Perfil/perfil";
-import Categoria from "../pages/Categoria/categoria";
-import Cadastro from "../pages/Cadastro/cadastro";
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import Home from '../pages/Home/home';
+import Perfil from '../pages/Perfil/perfil';
+import Categoria from '../pages/Categoria/categoria';
+import Cadastro from '../pages/Cadastro/cadastro';
+import ReceitasPorCategoria from '../pages/ReceitasPorCategoria/receitasPorCategoria';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Feather from 'react-native-vector-icons/Feather';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 export default function Routes() {
     return (
@@ -32,7 +36,7 @@ export default function Routes() {
         >
             <Tab.Screen
                 name="Início"
-                component={Home}
+                component={HomeStack}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <AntDesign
@@ -45,7 +49,7 @@ export default function Routes() {
             />
             <Tab.Screen
                 name="Categorias"
-                component={Categoria}
+                component={CategoriaStack}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <MaterialCommunityIcons
@@ -58,7 +62,7 @@ export default function Routes() {
             />
             <Tab.Screen
                 name="Cadastro"
-                component={Cadastro}
+                component={Cadastro} 
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Feather
@@ -71,7 +75,7 @@ export default function Routes() {
             />
             <Tab.Screen
                 name="Perfil"
-                component={Perfil}
+                component={PerfilStack}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <FontAwesome6
@@ -85,3 +89,28 @@ export default function Routes() {
         </Tab.Navigator>
     );
 }
+
+export function HomeStack() {
+    return (
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+            <Stack.Screen name="Home" component={Home} />
+        </Stack.Navigator>
+    );
+}
+
+export function CategoriaStack() {
+    return (
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+            <Stack.Screen name="Categoria" component={Categoria} />
+        </Stack.Navigator>
+    );
+}
+
+export function PerfilStack() {
+    return (
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+            <Stack.Screen name="Perfil" component={Perfil} />
+        </Stack.Navigator>
+    );
+}
+
