@@ -4,7 +4,7 @@ import { styles } from './style';
 import { GetProduto } from '../../service/apiReceitas';
 import { useState, useEffect } from 'react';
 
-export default function Home() {
+export default function Home({navigation}) {
 
     const [receitas, setReceitas] = useState([]);
 
@@ -41,15 +41,18 @@ export default function Home() {
 
                 <View style={styles.list}>
                     {receitas.map((receita) => (
-                        <View key={receita.id} >
-                            <TouchableOpacity>
+                        <View key={receita.id} style={styles.item}>
+                            <TouchableOpacity
+                            onPress={()=> navigation.navigate("Detalhe", {
+                                    receita}
+                              )}
+                            >
                                 <Image
                                     style={styles.receitaImg}
                                     source={{ uri: receita.imagem }}
                                 />
 
                                 <Text style={styles.receitaTitle}>{filterDesc(receita.nome)}</Text>
-
                             </TouchableOpacity>
 
                         </View>
