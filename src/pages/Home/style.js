@@ -38,4 +38,24 @@ export const styles = StyleSheet.create({
         marginTop: 3,
         marginBottom: 15
     },
+    containerAvaliacao: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        width: 55,
+        height: 20,
+        borderRadius: 10,
+        position: 'absolute',
+        right: 7,
+        top: 7,
+    },
+    iconeAvaliacao: {
+        marginRight: 3
+    },
+    textoAvaliacao: {
+        fontFamily: 'Poppins_700Bold',
+        fontWeight: 'bold',
+        color: '#fff'
+    },
 });
