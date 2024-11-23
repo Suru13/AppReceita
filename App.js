@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Detalhes from './pages/Detalhes';
@@ -89,3 +90,17 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 });
+=======
+import Routes from './src/routes/routes';
+import { NavigationContainer } from '@react-navigation/native';
+import Navbar from './src/components/NavBar/navbar';
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Navbar />
+      <Routes />
+    </NavigationContainer>
+  );
+}
+>>>>>>> main
