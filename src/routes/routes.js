@@ -48,10 +48,11 @@ function PerfilStack() {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Perfil" component={Perfil} />
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Cadastro" component={Cadastro} />
         </Stack.Navigator>
     );
 }
-
 
 export default function Routes() {
     return (

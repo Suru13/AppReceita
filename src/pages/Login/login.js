@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import { styles } from './style';
@@ -13,32 +13,27 @@ export default function Login() {
     const navigation = useNavigation();
 
     const handleLogin = async () => {
-
-            if (!email || !senha) {
-                Alert.alert('Erro', 'Preencha todos os campos!');
-                return;
-            }
+        if (!email || !senha) {
+            Alert.alert('Erro', 'Preencha todos os campos!');
+            return;
+        }
 
         try {
             const response = await axios.get('https://673fc934a9bc276ec4b996c4.mockapi.io/apicads/api');
-
             const user = response.data.find(
                 (user) => user.Email.toLowerCase() === email.toLowerCase() && user.Senha === senha
             );
 
             if (user) {
-
                 await AsyncStorage.setItem('@user', JSON.stringify(user));
-
                 Alert.alert('Sucesso', `Bem-vindo, ${user.Nome}!`);
-                navigation.navigate('Home');
+                navigation.replace('Perfil');
                 setEmail('');
                 setSenha('');
             } else {
                 Alert.alert('Erro', 'Email ou senha incorretos. Tente novamente.');
             }
         } catch (error) {
-            console.error('Erro na API:', error.response?.data || error.message);
             Alert.alert('Erro', 'Não foi possível realizar o login.');
         }
     };
@@ -50,13 +45,13 @@ export default function Login() {
                 if (storedUser) {
                     const user = JSON.parse(storedUser);
                     console.log('Usuário logado:', user);
-                    navigation.navigate('Início');
+                    navigation.replace('Perfil');
                 }
             } catch (error) {
                 console.error('Erro ao recuperar usuário:', error);
             }
         };
-    
+
         checkLogin();
     }, []);
 
@@ -85,9 +80,9 @@ export default function Login() {
                 <Text style={styles.buttonText}>Entrar</Text>
             </ButtonField>
 
-            <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
-                <Text style={styles.linkText}>Não possui cadastro? Cadastre-se.</Text>
-            </TouchableOpacity>
+            <Text style={styles.linkText} onPress={() => navigation.navigate('Cadastro')}>
+                Não possui cadastro? Cadastre-se.
+            </Text>
         </View>
     );
 }
