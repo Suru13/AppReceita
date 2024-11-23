@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, ScrollView, Text, View } from 'react-native';
 import { styles } from './style';
-
+import IconeAvaliacao from '../../components/RatingStar/rating';
 export default function Detalhe({ route }) {
     const { receita } = route.params;
 
@@ -16,11 +16,16 @@ export default function Detalhe({ route }) {
                     paddingHorizontal: 20
                 }}
             >
-                <View style={styles.header}>
-                    <Image source={{ uri: receita.imagem }} style={styles.imagem} />
-                    <Text style={styles.titulo}>{receita.nome}</Text>
-                    <Text style={styles.subTitulo}>Ingredientes:</Text>
+
+                <Image source={{ uri: receita.imagem }} style={styles.imagem} />
+                <Text style={styles.titulo}>{receita.nome}</Text>
+
+                <View style={styles.avaliacaoContainer}>
+                    <IconeAvaliacao />
+                    <Text style={styles.textoAvaliacao}>{receita.avaliacao}</Text>
                 </View>
+
+                <Text style={styles.subTitulo}>Ingredientes:</Text>
 
                 <View style={styles.ingredientesContainer}>
                     {ingredientesArray.map((ingrediente, index) => (

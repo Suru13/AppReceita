@@ -5,9 +5,6 @@ export const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#2b2b2b',
     },
-    header: {
-        marginBottom: 16,
-    },
     imagem: {
         width: '100%',
         height: 300,
@@ -18,7 +15,19 @@ export const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         color: '#fff',
-        marginBottom: 16,
+        marginBottom: 3,
+    },
+    textoAvaliacao: {
+        fontFamily: 'Poppins_700Bold',
+        fontWeight: 'bold',
+        fontSize: 16,
+        color: '#fff',
+        marginLeft: 8,  
+    },
+    avaliacaoContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',  
+        marginBottom: 10,
     },
     subTitulo: {
         fontSize: 22,
