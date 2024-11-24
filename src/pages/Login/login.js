@@ -12,6 +12,19 @@ export default function Login() {
     const [senha, setSenha] = useState('');
     const navigation = useNavigation();
 
+    const saveCredentials = async (email, senha) => {
+        await AsyncStorage.setItem('@credentials', JSON.stringify({ email, senha }));
+    };
+
+    const loadCredentials = async () => {
+        const storedCredentials = await AsyncStorage.getItem('@credentials');
+        if (storedCredentials) {
+            const { email, senha } = JSON.parse(storedCredentials);
+            setEmail(email);
+            setSenha(senha);
+        }
+    };
+
     const handleLogin = async () => {
         if (!email || !senha) {
             Alert.alert('Erro', 'Preencha todos os campos!');
@@ -25,11 +38,10 @@ export default function Login() {
             );
 
             if (user) {
+                await saveCredentials(email, senha);
                 await AsyncStorage.setItem('@user', JSON.stringify(user));
                 Alert.alert('Sucesso', `Bem-vindo, ${user.Nome}!`);
                 navigation.replace('Perfil');
-                setEmail('');
-                setSenha('');
             } else {
                 Alert.alert('Erro', 'Email ou senha incorretos. Tente novamente.');
             }
@@ -39,20 +51,7 @@ export default function Login() {
     };
 
     useEffect(() => {
-        const checkLogin = async () => {
-            try {
-                const storedUser = await AsyncStorage.getItem('@user');
-                if (storedUser) {
-                    const user = JSON.parse(storedUser);
-                    console.log('Usuário logado:', user);
-                    navigation.replace('Perfil');
-                }
-            } catch (error) {
-                console.error('Erro ao recuperar usuário:', error);
-            }
-        };
-
-        checkLogin();
+        loadCredentials();
     }, []);
 
     return (
