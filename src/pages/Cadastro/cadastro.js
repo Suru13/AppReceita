@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { styles } from './style';
 
-export default function Cadastro({navigation}) {
+export default function Cadastro({ navigation }) {
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
     const handleCadastro = async () => {
-        
         setIsLoading(true);
 
         if (!nome || !email || !senha) {
@@ -19,6 +18,17 @@ export default function Cadastro({navigation}) {
         }
 
         try {
+            const checkResponse = await fetch('https://673fc934a9bc276ec4b996c4.mockapi.io/apicads/api');
+            const users = await checkResponse.json();
+
+            const emailExists = users.some((user) => user.Email.toLowerCase() === email.toLowerCase());
+
+            if (emailExists) {
+                Alert.alert('Erro', 'Este e-mail já está cadastrado.');
+                setIsLoading(false);
+                return;
+            }
+
             const response = await fetch('https://673fc934a9bc276ec4b996c4.mockapi.io/apicads/api', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -31,19 +41,21 @@ export default function Cadastro({navigation}) {
 
             if (response.ok) {
                 Alert.alert('Sucesso', 'Usuário cadastrado com sucesso!');
-                navigation.navigate('Login')
+                navigation.navigate('Login');
                 setNome('');
                 setEmail('');
                 setSenha('');
             } else {
                 Alert.alert('Erro', 'Não foi possível cadastrar o usuário.');
             }
-        } catch {
+        } catch (error) {
             Alert.alert('Erro', 'Ocorreu um erro ao conectar à API.');
+            console.error(error);
         } finally {
             setIsLoading(false);
         }
     };
+
 
 
     return (
