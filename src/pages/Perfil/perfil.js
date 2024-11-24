@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, Alert, Image, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styles } from './style';
 
@@ -58,14 +58,22 @@ export default function Perfil({ navigation }) {
     }
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Perfil</Text>
-            <Text style={styles.info}>Nome: {user.Nome}</Text>
-            <Text style={styles.info}>Email: {user.Email}</Text>
+        <ScrollView contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+        >
+            <Image
+                source={user.Avatar ? { uri: user.Avatar } : require('../../../assets/User.png')}
+                style={styles.userImage}
+            />
+            <Text style={styles.infoNome}>{user.Nome}</Text>
+            <Text style={styles.infoEmail}>{user.Email}</Text>
 
+            <Text style={styles.textFavoritos}>Receitas Favoritas</Text>
+            
             <TouchableOpacity style={styles.button} onPress={handleLogout}>
                 <Text style={styles.buttonText}>Sair</Text>
             </TouchableOpacity>
-        </View>
+        </ScrollView>
     );
+
 }
