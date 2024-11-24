@@ -45,7 +45,6 @@ export default function Home({ navigation }) {
         return typeof desc === 'string' ? `${desc.substring(0, 20)}...` : '';
     }
 
-
     return (
         <View style={styles.container}>
             <ScrollView

@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#fff',
         marginBottom: 3,
+        bottom: 30
     },
     textoAvaliacao: {
         fontFamily: 'Poppins_700Bold',
@@ -27,13 +28,12 @@ export const styles = StyleSheet.create({
     avaliacaoContainer: {
         flexDirection: 'row',
         alignItems: 'center',  
-        marginBottom: 10,
+        bottom: 33
     },
     subTitulo: {
         fontSize: 22,
         fontWeight: 'bold',
         color: '#f38830',
-        marginTop: 20,
         marginBottom: 10,
     },
     ingrediente: {
@@ -49,4 +49,14 @@ export const styles = StyleSheet.create({
         color: '#fff',
         lineHeight: 24,
     },
+    buttonHeart: {
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        borderRadius: 10,
+        width: 40,
+        height: 35,
+        alignItems: 'center',
+        justifyContent: 'center',
+        bottom: 55,
+        left: 385,
+    }
 });
