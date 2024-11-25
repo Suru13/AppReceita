@@ -1,13 +1,17 @@
-import { ScrollView, Text, View, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { ScrollView, Text, View, Image, TouchableOpacity, ActivityIndicator, TextInput } from 'react-native';
 import Banner from '../../components/BannerHome/banner';
 import { styles } from './style';
 import { GetProduto } from '../../service/apiReceitas';
 import { useState, useEffect } from 'react';
 import Octicons from 'react-native-vector-icons/Octicons'
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import InputField from '../../components/Input';
 
 export default function Home({ navigation }) {
     const [receitas, setReceitas] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [filteredReceitas, setFilteredReceitas] = useState([]);
+    const [searchText, setSearchText] = useState('');
 
 
     useEffect(() => {
@@ -18,6 +22,7 @@ export default function Home({ navigation }) {
                 if (response && response.data) {
                     console.log(response.data);
                     setReceitas(response.data);
+                    setFilteredReceitas(response.data);
                 }
             } catch (error) {
                 console.error('Erro ao buscar produtos:', error);
@@ -28,6 +33,18 @@ export default function Home({ navigation }) {
 
         buscarProdutos();
     }, []);
+
+    const filterReceitas = (text) => {
+        setSearchText(text);
+        if (text.trim() === '') {
+            setFilteredReceitas(receitas);
+        } else {
+            const filtered = receitas.filter((receita) =>
+                receita.nome.toLowerCase().includes(text.toLowerCase())
+            );
+            setFilteredReceitas(filtered);
+        }
+    };
 
     if (loading) {
         return (
@@ -54,10 +71,27 @@ export default function Home({ navigation }) {
                     <Banner />
                 </View>
 
+                <View style={styles.containerInput}>
+
+                    <FontAwesome 
+                    name='search'
+                    size={20}
+                    style={styles.iconSearch}
+                    color={'#1D1C1C'}
+                    />
+
+                    <InputField
+                        style={styles.input}
+                        placeholder="Buscar receitas..."
+                        value={searchText}
+                        onChangeText={filterReceitas}
+                    />
+                </View>
+
                 <Text style={styles.text}>Receitas Brasileiras</Text>
 
                 <View style={styles.list}>
-                    {receitas.map((receita) => (
+                    {filteredReceitas.map((receita) => (
                         <View key={receita.id} style={styles.item}>
                             <TouchableOpacity
                                 onPress={() => navigation.navigate("Detalhe", {

@@ -58,4 +58,28 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#fff'
     },
+    input: {
+        width: '80%',
+        height: 50,
+        backgroundColor: '#333',
+        borderRadius: 8,
+        color: '#fff',
+        marginBottom: 10,
+        marginTop: 10,
+        fontSize: 16,
+        borderWidth: 1,
+        borderColor: 'hsl(13, 86%, 51%)',
+        paddingHorizontal: 35
+    },
+    containerInput: {
+        justifyContent:'center',
+        alignItems: 'center',
+    },
+    iconSearch: {
+        position: 'absolute',
+        top: 25,
+        left: 57,
+        zIndex: 1,
+        marginLeft: 2
+    }
 });
