@@ -47,10 +47,6 @@ export default function Perfil({ navigation }) {
 
             Alert.alert('Sucesso', 'Você saiu da conta.');
 
-            navigation.reset({
-                index: 0,
-                routes: [{ name: 'Home' }],
-            });
         } catch (error) {
             console.error('Erro ao deslogar:', error);
         }

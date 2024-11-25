@@ -6,24 +6,14 @@ import Perfil from '../pages/Perfil/perfil';
 import Categoria from '../pages/Categoria/categoria';
 import Cadastro from '../pages/Cadastro/cadastro';
 import ReceitasPorCategoria from '../pages/ReceitasPorCategoria/receitasPorCategoria';
+import Detalhe from '../pages/DetalheReceita/detalhe';
+import Login from "../pages/Login/login";
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
-import Feather from 'react-native-vector-icons/Feather';
-import Detalhe from '../pages/DetalheReceita/detalhe';
-import Login from "../pages/Login/login";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-
-function CadastroStack() {
-    return (
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Cadastro" component={Cadastro} />
-            <Stack.Screen name="Login" component={Login} />
-        </Stack.Navigator>
-    );
-}
 
 function HomeStack() {
     return (
@@ -86,6 +76,7 @@ export default function Routes() {
                             color={focused ? '#ef4418' : '#EBE7E7'}
                         />
                     ),
+                    unmountOnBlur: true
                 }}
             />
             <Tab.Screen
@@ -99,6 +90,7 @@ export default function Routes() {
                             color={focused ? '#ef4418' : '#EBE7E7'}
                         />
                     ),
+                    unmountOnBlur: true
                 }}
             />
             <Tab.Screen
@@ -112,6 +104,7 @@ export default function Routes() {
                             color={focused ? '#ef4418' : '#EBE7E7'}
                         />
                     ),
+                    unmountOnBlur: true
                 }}
             />
         </Tab.Navigator>
